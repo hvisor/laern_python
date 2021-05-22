@@ -1,6 +1,9 @@
-import re
+# ตัดตัวอักษร a, e, i, o, u จากข้อความ
+# วิธีที่ 1
+import re # RegEx or Regular Expression 
+
 txt = 'What kind of music do you like?'
-rep = {"a": "", "e": "", "i": "", "o": "", "u": ""}
+rep = {"a": "", "e": "", "i": "", "o": "", "u": ""} #กำหนดตัวอักษรที่ต้องการแทนที่ โจทย์ให้ตัดทิ้ง หรือ แทนที่ ด้วย ""
 pattern = re.compile("|".join(rep.keys()))
 txt = pattern.sub(lambda m: rep[re.escape(m.group(0))], txt)
 
@@ -8,7 +11,7 @@ print(txt)
 # # # # # # # # # # # # # # # # # # 
 
 
-
+# วิธีที่ 2
 txt = 'What kind of music do you like?'
 for r in (("a", ""), ("e", ""), ("i", ""), ("o", ""), ("u", "")):
     txt = txt.replace(*r)
